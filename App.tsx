@@ -1,21 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_700Bold,
+  useFonts,
+} from "@expo-google-fonts/poppins";
+import * as SplashScreen from "expo-splash-screen";
+import React, { useCallback } from "react";
+import { View } from "react-native";
+import { ThemeProvider } from "styled-components";
+import theme from "./src/global/styles/theme";
+import Dashboard from "./src/screens/Dashboard";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_700Bold,
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+      <ThemeProvider theme={theme}>
+        <Dashboard />
+      </ThemeProvider>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
