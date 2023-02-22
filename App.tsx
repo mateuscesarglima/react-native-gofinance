@@ -5,11 +5,12 @@ import {
   useFonts,
 } from "@expo-google-fonts/poppins";
 import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
 import React, { useCallback } from "react";
 import { View } from "react-native";
 import { ThemeProvider } from "styled-components";
 import theme from "./src/global/styles/theme";
-import Dashboard from "./src/screens/Dashboard";
+import { Dashboard } from "./src/screens/Dashboard";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -34,6 +35,7 @@ export default function App() {
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <ThemeProvider theme={theme}>
         <Dashboard />
+        <StatusBar style="light" />
       </ThemeProvider>
     </View>
   );

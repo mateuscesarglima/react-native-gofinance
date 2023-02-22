@@ -9,11 +9,14 @@ import {
   UserGreeting,
   UserName,
   Icon,
+  HighlightCards,
+  Transactions,
+  Title,
 } from "./styles";
 import { RFValue } from "react-native-responsive-fontsize";
-import { HighlightCard } from "../../HighlightCard";
+import { HighlightCard } from "../../components/HighlightCard";
 
-const Dashboard = () => {
+export const Dashboard = () => {
   return (
     <Container>
       <Header>
@@ -32,9 +35,29 @@ const Dashboard = () => {
           <Icon name="power" size={RFValue(24)} />
         </UserWrapper>
       </Header>
-      <HighlightCard />
+      <HighlightCards>
+        <HighlightCard
+          title="Entradas"
+          amount="17.400,00"
+          lastTransaction="última entrada dia 13 de abril"
+          type="up"
+        />
+        <HighlightCard
+          title="Saídas"
+          amount="1.259,00"
+          lastTransaction="Última saída dia 03 de abril"
+          type="down"
+        />
+        <HighlightCard
+          title="Total"
+          amount="16.141,00"
+          lastTransaction="01 à 16 de abril"
+          type="total"
+        />
+      </HighlightCards>
+      <Transactions>
+        <Title>Listagem</Title>
+      </Transactions>
     </Container>
   );
 };
-
-export default Dashboard;
