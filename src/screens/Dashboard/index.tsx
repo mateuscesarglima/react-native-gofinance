@@ -10,11 +10,13 @@ import {
   UserName,
   Icon,
   HighlightCards,
-  Transactions,
+  TransactionsContainer,
   Title,
+  Transactions,
 } from "./styles";
 import { RFValue } from "react-native-responsive-fontsize";
 import { HighlightCard } from "../../components/HighlightCard";
+import TransactionCard from "../../components/TransactionCard/TransactionCard";
 
 export const Dashboard = () => {
   return (
@@ -55,9 +57,12 @@ export const Dashboard = () => {
           type="total"
         />
       </HighlightCards>
-      <Transactions>
+      <TransactionsContainer>
         <Title>Listagem</Title>
-      </Transactions>
+        <Transactions>
+          <TransactionCard />
+        </Transactions>
+      </TransactionsContainer>
     </Container>
   );
 };

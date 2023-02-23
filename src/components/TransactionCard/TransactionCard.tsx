@@ -15,15 +15,15 @@ const TransactionCard = () => {
   return (
     <Container>
       <Header>
-        <Title></Title>
-        <Amount></Amount>
+        <Title>Desenvolvimento de site</Title>
+        <Amount>R$ 12.000,00</Amount>
       </Header>
       <Footer>
         <CategoryBox>
-          <Icon />
-          <CategoryText></CategoryText>
+          <Icon name="dollar-sign" />
+          <CategoryText>Vendas</CategoryText>
         </CategoryBox>
-        <Data></Data>
+        <Data>13/04/2020</Data>
       </Footer>
     </Container>
   );

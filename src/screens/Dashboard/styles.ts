@@ -67,12 +67,18 @@ export const HighlightCards = styled.ScrollView.attrs({
   margin-top: ${RFPercentage(20)}px;
 `;
 
-export const Transactions = styled.View`
-  padding: 0 24px;
-  margin-top: ${RFPercentage(12)}px;
-`;
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.text_dark};
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(18)}px;
+  margin-bottom: ${RFValue(16)}px;
+`;
+
+export const Transactions = styled.ScrollView.attrs({
+  vertical: false,
+})``;
+
+export const TransactionsContainer = styled.View`
+  padding: 0 24px;
+  margin-top: ${RFPercentage(9)}px;
 `;
