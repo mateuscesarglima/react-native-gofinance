@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-import { Button } from "../../components/ui/atoms/Button";
-import { CategorySelectButton } from "../../components/ui/molecules/CategorySelectButton";
-import { Input } from "../../components/ui/atoms/Input";
-import { TransactionTypeButton } from "../../components/ui/atoms/TransactionTypeButton";
-import Header from "../../components/ui/organism/Header";
-import { Container, Form, Fields, TransactionTypes } from "./styles";
-import { CategorySelect } from "../CategorySelect";
 import { Modal } from "react-native";
+import { useForm } from "react-hook-form";
+import { Button } from "../../components/ui/atoms/Button";
+import { TransactionTypeButton } from "../../components/ui/atoms/TransactionTypeButton";
+import { CategorySelectButton } from "../../components/ui/molecules/CategorySelectButton";
+import { InputForm } from "../../components/ui/molecules/InputForm";
+import Header from "../../components/ui/organism/Header";
+import { CategorySelect } from "../CategorySelect";
+import { Container, Fields, Form, TransactionTypes } from "./styles";
+
+interface FormData {
+  name: string;
+  amount: string;
+}
 
 export const Register = () => {
   const [transactionType, setTransactionType] = useState<string>("");
@@ -15,6 +21,7 @@ export const Register = () => {
     key: "category",
     name: "Categoria",
   });
+  const { control, handleSubmit } = useForm();
 
   const transactionTypeHandle = (type: "up" | "down") => {
     setTransactionType(type);
@@ -28,13 +35,23 @@ export const Register = () => {
     setCategoryModalOpen(false);
   };
 
+  const handleRegister = (form: FormData) => {
+    const data = {
+      name: form.name,
+      amount: form.amount,
+      transactionType,
+      category: category.key,
+    };
+    console.log(data);
+  };
+
   return (
     <Container>
       <Header title="Cadastro" />
       <Form>
         <Fields>
-          <Input placeholder="Nome" />
-          <Input placeholder="Preço" />
+          <InputForm placeholder="Nome" name="name" control={control} />
+          <InputForm placeholder="Preço" name="amount" control={control} />
           <TransactionTypes>
             <TransactionTypeButton
               title="Income"
@@ -54,7 +71,7 @@ export const Register = () => {
             onPress={openCategoryModalHandle}
           />
         </Fields>
-        <Button title="Enviar" />
+        <Button title="Enviar" onPress={handleSubmit(handleRegister)} />
       </Form>
       <Modal visible={categoryModalOpen}>
         <CategorySelect
