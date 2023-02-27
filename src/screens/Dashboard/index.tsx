@@ -15,11 +15,11 @@ import {
   TransactionList,
 } from "./styles";
 import { RFValue } from "react-native-responsive-fontsize";
-import { HighlightCard } from "../../components/HighlightCard";
+import { HighlightCard } from "../../components/ui/organism/HighlightCard";
 import {
   TransactionCard,
   ITransactionCard,
-} from "../../components/TransactionCard/TransactionCard";
+} from "../../components/ui/organism/TransactionCard/TransactionCard";
 import { getBottomSpace } from "react-native-iphone-x-helper";
 import { View } from "react-native";
 
