@@ -11,22 +11,40 @@ import {
   Data,
 } from "./styles";
 
-const TransactionCard = () => {
+interface Category {
+  name: string;
+  icon: string;
+}
+
+export interface ITransactionCard {
+  type: "positive" | "negative";
+  title: string;
+  amount: string;
+  category: Category;
+  date: string;
+}
+
+interface Props {
+  data: ITransactionCard;
+}
+
+export const TransactionCard = ({ data }: Props) => {
   return (
     <Container>
       <Header>
-        <Title>Desenvolvimento de site</Title>
-        <Amount>R$ 12.000,00</Amount>
+        <Title>{data.title}</Title>
+        <Amount type={data.type}>
+          {data.type === "negative" && "- "}
+          {data.amount}
+        </Amount>
       </Header>
       <Footer>
         <CategoryBox>
-          <Icon name="dollar-sign" />
-          <CategoryText>Vendas</CategoryText>
+          <Icon name={data.category.icon} />
+          <CategoryText>{data.category.name}</CategoryText>
         </CategoryBox>
-        <Data>13/04/2020</Data>
+        <Data>{data.date}</Data>
       </Footer>
     </Container>
   );
 };
-
-export default TransactionCard;

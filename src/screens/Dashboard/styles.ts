@@ -1,7 +1,12 @@
 import styled from "styled-components/native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { FlatList, FlatListProps } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { getStatusBarHeight } from "react-native-iphone-x-helper";
+import {
+  getBottomSpace,
+  getStatusBarHeight,
+} from "react-native-iphone-x-helper";
+import { IDataListProps } from ".";
 
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.background};
@@ -74,11 +79,19 @@ export const Title = styled.Text`
   margin-bottom: ${RFValue(16)}px;
 `;
 
-export const Transactions = styled.ScrollView.attrs({
-  vertical: false,
+export const TransactionList = styled(
+  FlatList as new (
+    props: FlatListProps<IDataListProps>
+  ) => FlatList<IDataListProps>
+).attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: {
+    paddingBottom: getBottomSpace(),
+  },
 })``;
 
 export const TransactionsContainer = styled.View`
+  flex: 1;
   padding: 0 24px;
   margin-top: ${RFPercentage(9)}px;
 `;

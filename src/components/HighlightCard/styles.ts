@@ -44,7 +44,7 @@ export const Icon = styled(Feather)<TypeProps>`
       color: ${({ theme }) => theme.colors.attention};
     `}
 
-    ${({ type }) =>
+  ${({ type }) =>
     type === "total" &&
     css`
       color: ${({ theme }) => theme.colors.shape};

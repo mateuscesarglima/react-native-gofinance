@@ -12,13 +12,49 @@ import {
   HighlightCards,
   TransactionsContainer,
   Title,
-  Transactions,
+  TransactionList,
 } from "./styles";
 import { RFValue } from "react-native-responsive-fontsize";
 import { HighlightCard } from "../../components/HighlightCard";
-import TransactionCard from "../../components/TransactionCard/TransactionCard";
+import {
+  TransactionCard,
+  ITransactionCard,
+} from "../../components/TransactionCard/TransactionCard";
+import { getBottomSpace } from "react-native-iphone-x-helper";
+import { View } from "react-native";
+
+export interface IDataListProps extends ITransactionCard {
+  id: string;
+}
 
 export const Dashboard = () => {
+  const data: IDataListProps[] = [
+    {
+      id: "1",
+      type: "positive",
+      title: "Desenvolvimento de site",
+      amount: "R$ 12.000,00",
+      category: { icon: "dollar-sign", name: "Vendas" },
+      date: "13/04/2020",
+    },
+    {
+      id: "2",
+      type: "negative",
+      title: "Hamburgueria Pizzy",
+      amount: "R$ 59,00",
+      category: { icon: "dollar-sign", name: "Vendas" },
+      date: "13/04/2020",
+    },
+    {
+      id: "3",
+      type: "positive",
+      title: "Aluguel do apartamento",
+      amount: "R$ 1000,00",
+      category: { icon: "dollar-sign", name: "Vendas" },
+      date: "13/04/2020",
+    },
+  ];
+
   return (
     <Container>
       <Header>
@@ -59,10 +95,17 @@ export const Dashboard = () => {
       </HighlightCards>
       <TransactionsContainer>
         <Title>Listagem</Title>
-        <Transactions>
-          <TransactionCard />
-        </Transactions>
+        <TransactionList
+          data={data}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <TransactionCard data={item} />}
+        />
       </TransactionsContainer>
     </Container>
   );
 };
+
+// title="Desenvolvimento de site"
+//             amount="12.000,00"
+//             category={{ name: "Vendas", icon: "dollar-sign" }}
+//             date="13/14/2020"
