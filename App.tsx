@@ -11,6 +11,7 @@ import { View } from "react-native";
 import { ThemeProvider } from "styled-components";
 import theme from "./src/global/styles/theme";
 import { Dashboard } from "./src/screens/Dashboard";
+import { Register } from "./src/screens/Register";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -34,7 +35,8 @@ export default function App() {
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <ThemeProvider theme={theme}>
-        <Dashboard />
+        {/* <Dashboard /> */}
+        <Register />
         <StatusBar style="light" />
       </ThemeProvider>
     </View>

@@ -36,15 +36,15 @@ export const CategoryBox = styled.View`
   align-items: center;
 `;
 export const Icon = styled(Feather)`
-  font-size: ${RFValue(20)};
+  font-size: ${RFValue(20)}px;
   color: ${({ theme }) => theme.colors.text};
 `;
 export const CategoryText = styled.Text`
   margin-left: 17px;
   color: ${({ theme }) => theme.colors.text};
-  font-size: ${RFValue(14)};
+  font-size: ${RFValue(14)}px;
 `;
 export const Data = styled.Text`
   color: ${({ theme }) => theme.colors.text};
-  font-size: ${RFValue(14)};
+  font-size: ${RFValue(14)}px;
 `;
