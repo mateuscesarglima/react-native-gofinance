@@ -7,11 +7,12 @@ import {
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import React, { useCallback } from "react";
-import { View, Modal } from "react-native";
+import { View } from "react-native";
 import { ThemeProvider } from "styled-components";
 import theme from "./src/global/styles/theme";
-import { CategorySelect } from "./src/screens/CategorySelect";
 import { Register } from "./src/screens/Register";
+import { NavigationContainer } from "@react-navigation/native";
+import { AppRoutes } from "./src/routes/app.routes";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -35,10 +36,10 @@ export default function App() {
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <ThemeProvider theme={theme}>
-        {/* <Dashboard /> */}
-        <Register />
-        {/* <CategorySelect /> */}
-        <StatusBar style="light" />
+        <NavigationContainer>
+          <AppRoutes />
+          <StatusBar style="light" />
+        </NavigationContainer>
       </ThemeProvider>
     </View>
   );
