@@ -2,6 +2,7 @@ import styled from "styled-components/native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { FlatList, FlatListProps } from "react-native";
 import { Feather } from "@expo/vector-icons";
+
 import {
   getBottomSpace,
   getStatusBarHeight,
@@ -95,3 +96,5 @@ export const TransactionsContainer = styled.View`
   padding: 0 24px;
   margin-top: ${RFPercentage(9)}px;
 `;
+
+export const LogoutButton = styled.TouchableOpacity``;
